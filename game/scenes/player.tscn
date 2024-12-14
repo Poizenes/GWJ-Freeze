@@ -44,7 +44,7 @@ region = Rect2(16, 0, 16, 32)
 atlas = ExtResource("3_q57fv")
 region = Rect2(32, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_onw0s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a21ln"]
 atlas = ExtResource("3_q57fv")
 region = Rect2(48, 0, 16, 32)
 
@@ -87,17 +87,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qj5cp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_onw0s")
 }],
 "loop": false,
 "name": &"throw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a21ln")
+}],
+"loop": false,
+"name": &"throw_return",
 "speed": 5.0
 }]
 
 [node name="Player" type="StaticBody2D"]
 script = ExtResource("1_vleww")
+THROW_ANIMATION_SPEED_SCALE = 4.0
+DUCK_ANIMATION_SPEED_SCALE = 8.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)
@@ -105,6 +112,6 @@ shape = SubResource("RectangleShape2D_go240")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_csfri")
-animation = &"duck"
+animation = &"throw_return"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="on_animation_finished"]

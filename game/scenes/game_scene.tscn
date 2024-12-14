@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccf4c66yc0is7"]
+[gd_scene load_steps=4 format=3 uid="uid://ccf4c66yc0is7"]
 
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_5sol3"]
 [ext_resource type="PackedScene" uid="uid://sfgnl556drib" path="res://scenes/player.tscn" id="1_nefw0"]
 [ext_resource type="PackedScene" uid="uid://c5amjyp3hjd6" path="res://scenes/snow_wall.tscn" id="2_84xa1"]
 
 [node name="GameScene" type="Node2D"]
+script = ExtResource("1_5sol3")
 
 [node name="Player" parent="." instance=ExtResource("1_nefw0")]
 position = Vector2(27, 132)
