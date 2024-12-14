@@ -1,11 +1,28 @@
-[gd_scene load_steps=12 format=3 uid="uid://sfgnl556drib"]
+[gd_scene load_steps=17 format=3 uid="uid://sfgnl556drib"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_vleww"]
 [ext_resource type="Texture2D" uid="uid://dpc0x8rrc2hgj" path="res://assets/animation/character/idle/idle.png" id="2_7pg07"]
+[ext_resource type="Texture2D" uid="uid://ovp7600528mt" path="res://assets/animation/character/duck/duck.png" id="2_xnoni"]
 [ext_resource type="Texture2D" uid="uid://dw1apq8dmch58" path="res://assets/animation/character/throw/throw.png" id="3_q57fv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go240"]
 size = Vector2(11, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h7yn"]
+atlas = ExtResource("2_xnoni")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnyvc"]
+atlas = ExtResource("2_xnoni")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mh2q"]
+atlas = ExtResource("2_xnoni")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4ee3"]
+atlas = ExtResource("2_xnoni")
+region = Rect2(48, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3mm7k"]
 atlas = ExtResource("2_7pg07")
@@ -33,6 +50,23 @@ region = Rect2(48, 0, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_csfri"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h7yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnyvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mh2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4ee3")
+}],
+"loop": false,
+"name": &"duck",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3mm7k")
@@ -71,8 +105,6 @@ shape = SubResource("RectangleShape2D_go240")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_csfri")
-animation = &"throw"
-frame = 3
-frame_progress = 1.0
+animation = &"duck"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="on_animation_finished"]
