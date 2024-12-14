@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://sfgnl556drib"]
+[gd_scene load_steps=21 format=3 uid="uid://sfgnl556drib"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_vleww"]
 [ext_resource type="Texture2D" uid="uid://dpc0x8rrc2hgj" path="res://assets/animation/character/idle/idle.png" id="2_7pg07"]
@@ -31,6 +31,22 @@ region = Rect2(0, 0, 16, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_kp25q"]
 atlas = ExtResource("2_7pg07")
 region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6yo1"]
+atlas = ExtResource("2_xnoni")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1nyk"]
+atlas = ExtResource("2_xnoni")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7un7"]
+atlas = ExtResource("2_xnoni")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npqmn"]
+atlas = ExtResource("2_xnoni")
+region = Rect2(0, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxb53"]
 atlas = ExtResource("3_q57fv")
@@ -80,6 +96,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_t6yo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1nyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7un7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npqmn")
+}],
+"loop": false,
+"name": &"stand_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pxb53")
 }, {
 "duration": 1.0,
@@ -105,6 +138,7 @@ animations = [{
 script = ExtResource("1_vleww")
 THROW_ANIMATION_SPEED_SCALE = 4.0
 DUCK_ANIMATION_SPEED_SCALE = 8.0
+STAND_UP_ANIMATION_SPEED_SCALE = 8.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)
@@ -112,6 +146,6 @@ shape = SubResource("RectangleShape2D_go240")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_csfri")
-animation = &"throw_return"
+animation = &"stand_up"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="on_animation_finished"]
