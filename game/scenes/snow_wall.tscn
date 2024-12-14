@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5amjyp3hjd6"]
+
+[ext_resource type="Texture2D" uid="uid://dr7ryquqsuivg" path="res://assets/snowwall/snowwall.png" id="1_d7a81"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8dt0"]
+atlas = ExtResource("1_d7a81")
+region = Rect2(0, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v3yc"]
+atlas = ExtResource("1_d7a81")
+region = Rect2(8, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo602"]
+atlas = ExtResource("1_d7a81")
+region = Rect2(16, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8nn8"]
+atlas = ExtResource("1_d7a81")
+region = Rect2(24, 0, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tk6ma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8dt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v3yc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo602")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8nn8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oaxs2"]
+size = Vector2(8, 16)
+
+[node name="SnowWall" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tk6ma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oaxs2")

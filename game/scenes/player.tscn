@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://sfgnl556drib"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_vleww"]
+[ext_resource type="Texture2D" uid="uid://dpc0x8rrc2hgj" path="res://assets/animation/character/idle/idle.png" id="2_7pg07"]
+[ext_resource type="Texture2D" uid="uid://dw1apq8dmch58" path="res://assets/animation/character/throw/throw.png" id="3_q57fv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_go240"]
+size = Vector2(11, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mm7k"]
+atlas = ExtResource("2_7pg07")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp25q"]
+atlas = ExtResource("2_7pg07")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxb53"]
+atlas = ExtResource("3_q57fv")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rr4n"]
+atlas = ExtResource("3_q57fv")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj5cp"]
+atlas = ExtResource("3_q57fv")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onw0s"]
+atlas = ExtResource("3_q57fv")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_csfri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mm7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp25q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxb53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rr4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj5cp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onw0s")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 5.0
+}]
+
+[node name="Player" type="StaticBody2D"]
+script = ExtResource("1_vleww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_go240")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_csfri")
+animation = &"throw"
+frame = 3
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="on_animation_finished"]

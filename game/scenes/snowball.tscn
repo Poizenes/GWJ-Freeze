@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://daovssus60bqi"]
+
+[ext_resource type="Script" path="res://scripts/snowball.gd" id="1_o1yv8"]
+[ext_resource type="Texture2D" uid="uid://57d31lgifcda" path="res://assets/snowball/snowball_4x4.png" id="2_tw7hj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihl8u"]
+size = Vector2(8, 8)
+
+[node name="Snowball" type="CharacterBody2D"]
+script = ExtResource("1_o1yv8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tw7hj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ihl8u")
