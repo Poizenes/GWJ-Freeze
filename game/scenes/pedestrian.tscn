@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://qptnysvrivga"]
+[gd_scene load_steps=13 format=3 uid="uid://1cr0ooaw0m1c"]
 
+[ext_resource type="Texture2D" uid="uid://dpc0x8rrc2hgj" path="res://assets/animation/character/idle/idle.png" id="1_dedip"]
 [ext_resource type="Script" path="res://scripts/pedestrian.gd" id="1_i6hf5"]
 [ext_resource type="Texture2D" uid="uid://ovp7600528mt" path="res://assets/animation/character/duck/duck.png" id="2_gq03a"]
-[ext_resource type="Texture2D" uid="uid://bys6y7rt1mi2l" path="res://assets/animation/pedestrian/walk/walk.png" id="3_k41u6"]
+[ext_resource type="AudioStream" uid="uid://si0cmhr5s8km" path="res://assets/sounds/hit.mp3" id="4_waeq7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ef53g"]
 size = Vector2(11, 33)
@@ -23,29 +24,13 @@ region = Rect2(32, 0, 16, 32)
 atlas = ExtResource("2_gq03a")
 region = Rect2(48, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e14go"]
-atlas = ExtResource("3_k41u6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_w61q1"]
+atlas = ExtResource("1_dedip")
 region = Rect2(0, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ckt4s"]
-atlas = ExtResource("3_k41u6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_udrrs"]
+atlas = ExtResource("1_dedip")
 region = Rect2(16, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y3um0"]
-atlas = ExtResource("3_k41u6")
-region = Rect2(32, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bvbu7"]
-atlas = ExtResource("3_k41u6")
-region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cknl0"]
-atlas = ExtResource("3_k41u6")
-region = Rect2(64, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_okjnk"]
-atlas = ExtResource("3_k41u6")
-region = Rect2(80, 0, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvan8"]
 animations = [{
@@ -68,41 +53,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e14go")
+"texture": SubResource("AtlasTexture_w61q1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ckt4s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y3um0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bvbu7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cknl0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_okjnk")
+"texture": SubResource("AtlasTexture_udrrs")
 }],
 "loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
 
-[node name="Pedestrian" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "collision_shape")]
+[node name="Pedestrian" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "collision_shape", "sound")]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_i6hf5")
 sprite = NodePath("AnimatedSprite2D")
 collision_shape = NodePath("CollisionShape2D")
+sound = NodePath("Sound")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_ef53g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_tvan8")
 animation = &"hit"
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_waeq7")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
