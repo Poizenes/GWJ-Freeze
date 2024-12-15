@@ -17,6 +17,7 @@ func _physics_process(delta: float) -> void:
 func on_snowball_hit() -> void:
 	collision_shape.disabled = true
 	sprite.play("hit")
+	velocity.x = 0
 	sprite.speed_scale = HIT_ANIMATION_SPEED_SCALE
 	sound.play()
 
