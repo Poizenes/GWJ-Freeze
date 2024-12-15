@@ -9,9 +9,10 @@ func _ready() -> void:
 	assert(sprite)
 	assert(collision_shape)
 	sprite.play("walk")
+	velocity.x = -10
 
 func _physics_process(delta: float) -> void:
-	position.x -= 10 * delta
+	move_and_collide(velocity * delta)
 
 func on_snowball_hit() -> void:
 	collision_shape.disabled = true

@@ -40,8 +40,8 @@ func stand_up() -> void:
 func on_animation_finished() -> void:
 	if sprite.animation == "throw":
 		var snowball = load("res://scenes/snowball.tscn").instantiate()
-		get_parent().add_child(snowball)
 		snowball.position = position + Vector2(-2, -4)
+		get_parent().add_child(snowball)
 		sprite.play("throw_return")
 	elif sprite.animation == "stand_up":
 		idle()

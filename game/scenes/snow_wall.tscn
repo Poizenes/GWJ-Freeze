@@ -42,6 +42,8 @@ animations = [{
 size = Vector2(8, 16)
 
 [node name="SnowWall" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tk6ma")

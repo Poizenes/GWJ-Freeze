@@ -10,6 +10,8 @@ signal snowball_hit
 @export var pedestrian_spawn_timer: Timer
 @export var score_counter: Label
 
+var pedestrian_queue: Array = []
+
 var score : int = 0:
 	set(new_score):
 		score = new_score
@@ -29,8 +31,9 @@ func _input(event: InputEvent) -> void:
 
 func spawn_pedestrian():
 	var pedestrian = load("res://scenes/pedestrian.tscn").instantiate()
-	add_child(pedestrian)
 	pedestrian.position = Vector2(310, 130)
+	add_child(pedestrian)
+	pedestrian_queue.append(pedestrian)
 	print("Pedestrian spawned")
 
 func on_snowball_hit():
