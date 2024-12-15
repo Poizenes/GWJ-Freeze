@@ -112,6 +112,7 @@ script = ExtResource("1_i6hf5")
 sprite = NodePath("AnimatedSprite2D")
 collision_shape = NodePath("CollisionShape2D")
 sound = NodePath("Sound")
+HIT_ANIMATION_SPEED_SCALE = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)

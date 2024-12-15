@@ -20,6 +20,7 @@ func on_snowball_hit() -> void:
 	velocity.x = 0
 	sprite.speed_scale = HIT_ANIMATION_SPEED_SCALE
 	sound.play()
+	get_parent().emit_signal("snowball_hit")
 
 func _on_animation_finished() -> void:
 	if sprite.animation == "hit":
