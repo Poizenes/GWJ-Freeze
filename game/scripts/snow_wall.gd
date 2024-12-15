@@ -5,7 +5,8 @@ extends StaticBody2D
 
 @export var states: Array = [66, 33, 0]
 var current_state = 0
-@export var health: int = 100:
+@export var max_health: int = 100
+var health: int = max_health:
 	set(new_health):
 		print("Health")
 		if new_health > 0:
