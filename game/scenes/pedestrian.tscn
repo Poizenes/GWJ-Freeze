@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://1cr0ooaw0m1c"]
+[gd_scene load_steps=13 format=3 uid="uid://1cr0ooaw0m1c"]
 
 [ext_resource type="Texture2D" uid="uid://dpc0x8rrc2hgj" path="res://assets/animation/character/idle/idle.png" id="1_dedip"]
 [ext_resource type="Script" path="res://scripts/pedestrian.gd" id="1_i6hf5"]
 [ext_resource type="Texture2D" uid="uid://ovp7600528mt" path="res://assets/animation/character/duck/duck.png" id="2_gq03a"]
+[ext_resource type="AudioStream" uid="uid://si0cmhr5s8km" path="res://assets/sounds/hit.mp3" id="4_waeq7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ef53g"]
 size = Vector2(11, 33)
@@ -62,12 +63,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Pedestrian" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "collision_shape")]
+[node name="Pedestrian" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "collision_shape", "sound")]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_i6hf5")
 sprite = NodePath("AnimatedSprite2D")
 collision_shape = NodePath("CollisionShape2D")
+sound = NodePath("Sound")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
@@ -77,5 +79,8 @@ shape = SubResource("RectangleShape2D_ef53g")
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_tvan8")
 animation = &"hit"
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_waeq7")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
