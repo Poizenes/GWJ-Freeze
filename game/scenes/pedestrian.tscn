@@ -1,28 +1,36 @@
-[gd_scene load_steps=17 format=3 uid="uid://1cr0ooaw0m1c"]
+[gd_scene load_steps=19 format=3 uid="uid://1cr0ooaw0m1c"]
 
 [ext_resource type="Script" path="res://scripts/pedestrian.gd" id="1_i6hf5"]
-[ext_resource type="Texture2D" uid="uid://ovp7600528mt" path="res://assets/animation/character/duck/duck.png" id="2_gq03a"]
+[ext_resource type="Texture2D" uid="uid://c2pucq1moii3g" path="res://assets/animation/pedestrian/hit/hit.png" id="2_u8iea"]
 [ext_resource type="Texture2D" uid="uid://bys6y7rt1mi2l" path="res://assets/animation/pedestrian/walk/walk.png" id="3_k41u6"]
 [ext_resource type="AudioStream" uid="uid://si0cmhr5s8km" path="res://assets/sounds/hit.mp3" id="4_waeq7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ef53g"]
 size = Vector2(11, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_inc1f"]
-atlas = ExtResource("2_gq03a")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qstbq"]
+atlas = ExtResource("2_u8iea")
 region = Rect2(0, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dcbvk"]
-atlas = ExtResource("2_gq03a")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcmp1"]
+atlas = ExtResource("2_u8iea")
 region = Rect2(16, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_unv4m"]
-atlas = ExtResource("2_gq03a")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8i68x"]
+atlas = ExtResource("2_u8iea")
 region = Rect2(32, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_npihk"]
-atlas = ExtResource("2_gq03a")
+[sub_resource type="AtlasTexture" id="AtlasTexture_d47w6"]
+atlas = ExtResource("2_u8iea")
 region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fv5q5"]
+atlas = ExtResource("2_u8iea")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d3ub"]
+atlas = ExtResource("2_u8iea")
+region = Rect2(80, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ts7r6"]
 atlas = ExtResource("3_k41u6")
@@ -52,16 +60,22 @@ region = Rect2(80, 0, 16, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_inc1f")
+"texture": SubResource("AtlasTexture_qstbq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dcbvk")
+"texture": SubResource("AtlasTexture_wcmp1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_unv4m")
+"texture": SubResource("AtlasTexture_8i68x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_npihk")
+"texture": SubResource("AtlasTexture_d47w6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fv5q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d3ub")
 }],
 "loop": false,
 "name": &"hit",
@@ -105,7 +119,7 @@ shape = SubResource("RectangleShape2D_ef53g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tvan8")
-animation = &"walk"
+animation = &"hit"
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_waeq7")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccf4c66yc0is7"]
+[gd_scene load_steps=5 format=3 uid="uid://ccf4c66yc0is7"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5sol3"]
 [ext_resource type="PackedScene" uid="uid://sfgnl556drib" path="res://scenes/player.tscn" id="1_nefw0"]
 [ext_resource type="PackedScene" uid="uid://c5amjyp3hjd6" path="res://scenes/snow_wall.tscn" id="2_84xa1"]
+[ext_resource type="PackedScene" uid="uid://khjrcp8tf243" path="res://scenes/floor.tscn" id="4_675ag"]
 
 [node name="GameScene" type="Node2D" node_paths=PackedStringArray("pedestrian_spawn_timer", "score_counter")]
 script = ExtResource("1_5sol3")
@@ -27,3 +28,6 @@ offset_right = 163.0
 offset_bottom = 24.0
 text = "14"
 horizontal_alignment = 1
+
+[node name="Floor" parent="." instance=ExtResource("4_675ag")]
+position = Vector2(0, 156)

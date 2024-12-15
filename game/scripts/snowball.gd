@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		var collider = collision.get_collider()
 		if collider.has_method("on_snowball_hit"):
 			collider.call("on_snowball_hit")
-		get_parent().emit_signal("snowball_hit")
+			get_parent().emit_signal("snowball_hit")
 		queue_free()
 
 var nearest_pedestrian_position: Vector2 = Vector2.ZERO:
