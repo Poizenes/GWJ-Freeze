@@ -6,10 +6,11 @@ extends StaticBody2D
 @export var DUCK_ANIMATION_SPEED_SCALE : float = 2
 @export var STAND_UP_ANIMATION_SPEED_SCALE : float = 2
 
-@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
+@export var sprite : AnimatedSprite2D
 
 
 func _ready() -> void:
+	assert(sprite)
 	idle()
 
 func _physics_process(delta: float) -> void:

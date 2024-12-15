@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://1cr0ooaw0m1c"]
+
+[ext_resource type="Texture2D" uid="uid://dpc0x8rrc2hgj" path="res://assets/animation/character/idle/idle.png" id="1_dedip"]
+[ext_resource type="Script" path="res://scripts/pedestrian.gd" id="1_i6hf5"]
+[ext_resource type="Texture2D" uid="uid://ovp7600528mt" path="res://assets/animation/character/duck/duck.png" id="2_gq03a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ef53g"]
+size = Vector2(11, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inc1f"]
+atlas = ExtResource("2_gq03a")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcbvk"]
+atlas = ExtResource("2_gq03a")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unv4m"]
+atlas = ExtResource("2_gq03a")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npihk"]
+atlas = ExtResource("2_gq03a")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w61q1"]
+atlas = ExtResource("1_dedip")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udrrs"]
+atlas = ExtResource("1_dedip")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tvan8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inc1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcbvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unv4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npihk")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w61q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udrrs")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Pedestrian" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "collision_shape")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_i6hf5")
+sprite = NodePath("AnimatedSprite2D")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_ef53g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_tvan8")
+animation = &"hit"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

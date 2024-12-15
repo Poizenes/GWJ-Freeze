@@ -4,11 +4,25 @@
 [ext_resource type="PackedScene" uid="uid://sfgnl556drib" path="res://scenes/player.tscn" id="1_nefw0"]
 [ext_resource type="PackedScene" uid="uid://c5amjyp3hjd6" path="res://scenes/snow_wall.tscn" id="2_84xa1"]
 
-[node name="GameScene" type="Node2D"]
+[node name="GameScene" type="Node2D" node_paths=PackedStringArray("pedestrian_spawn_timer", "score_counter")]
 script = ExtResource("1_5sol3")
+pedestrian_spawn_timer = NodePath("PedestrianSpawnTimer")
+score_counter = NodePath("ScoreCounter")
 
 [node name="Player" parent="." instance=ExtResource("1_nefw0")]
-position = Vector2(27, 132)
+position = Vector2(27, 130)
+THROW_ANIMATION_SPEED_SCALE = 3.0
 
 [node name="SnowWall" parent="." instance=ExtResource("2_84xa1")]
-position = Vector2(38, 140)
+position = Vector2(38, 138)
+
+[node name="PedestrianSpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="ScoreCounter" type="Label" parent="."]
+offset_left = 123.0
+offset_top = 1.0
+offset_right = 163.0
+offset_bottom = 24.0
+horizontal_alignment = 1
