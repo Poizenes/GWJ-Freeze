@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 @export var sprite : AnimatedSprite2D
 @export var collision_shape : CollisionShape2D
 @export var sound: AudioStreamPlayer2D
@@ -19,7 +18,6 @@ func on_snowball_hit() -> void:
 	sprite.play("hit")
 	sprite.flip_h = true
 	sound.play()
-
 
 func _on_animation_finished() -> void:
 	if sprite.animation == "hit":

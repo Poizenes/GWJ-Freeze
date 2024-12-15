@@ -5,15 +5,7 @@ class_name Snowball
 
 @onready var start_position: Vector2
 
-var nearest_pedestrian_position: Vector2 = Vector2.ZERO:
-	set(new_position):
-		nearest_pedestrian_position = new_position
-	get:
-		return nearest_pedestrian_position
-
 func _ready() -> void:
-	#velocity.x = get_parent().INITIAL_VELOCITY.x
-	#velocity.y = get_parent().INITIAL_VELOCITY.y
 	sound.play()
 	start_position = global_position
 
@@ -26,7 +18,6 @@ func fly_arc(p0: Vector2, p2: Vector2, stretch: float, delta: float, speed: floa
 	position = q0.lerp(q1, t)
 
 func _physics_process(delta: float) -> void:
-	#velocity.y += get_parent().GRAVITY
 	var pedestrian_pos = get_nearest_pedestrian_position(Vector2(160, 120))
 	fly_arc(start_position, pedestrian_pos, -100, delta)
 	var collision = move_and_collide(velocity * delta)
@@ -36,6 +27,12 @@ func _physics_process(delta: float) -> void:
 			collider.call("on_snowball_hit")
 		get_parent().emit_signal("snowball_hit")
 		queue_free()
+
+var nearest_pedestrian_position: Vector2 = Vector2.ZERO:
+	set(new_position):
+		nearest_pedestrian_position = new_position
+	get:
+		return nearest_pedestrian_position
 
 func get_nearest_pedestrian_position(fallback: Vector2 = Vector2.ZERO) -> Vector2:
 	if nearest_pedestrian_position:
