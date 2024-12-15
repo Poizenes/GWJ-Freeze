@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5sol3"]
 [ext_resource type="PackedScene" uid="uid://sfgnl556drib" path="res://scenes/player.tscn" id="1_nefw0"]
 [ext_resource type="PackedScene" uid="uid://c5amjyp3hjd6" path="res://scenes/snow_wall.tscn" id="2_84xa1"]
-[ext_resource type="PackedScene" path="res://scenes/floor.tscn" id="4_675ag"]
+[ext_resource type="PackedScene" uid="uid://dw2tteuotnnnh" path="res://scenes/floor.tscn" id="4_675ag"]
 
 [node name="GameScene" type="Node2D" node_paths=PackedStringArray("pedestrian_spawn_timer", "score_counter")]
 script = ExtResource("1_5sol3")
