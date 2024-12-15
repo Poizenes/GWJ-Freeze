@@ -15,6 +15,7 @@ func _physics_process(delta: float) -> void:
 func on_snowball_hit() -> void:
 	collision_shape.disabled = true
 	sprite.play("hit")
+	sprite.flip_h = true
 
 
 func _on_animation_finished() -> void:
