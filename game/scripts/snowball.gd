@@ -19,7 +19,7 @@ func fly_arc(p0: Vector2, p2: Vector2, stretch: float, delta: float, speed: floa
 
 func _physics_process(delta: float) -> void:
 	var pedestrian_pos = get_nearest_pedestrian_position(Vector2(160, 120))
-	fly_arc(start_position, pedestrian_pos, -100, delta)
+	fly_arc(start_position, pedestrian_pos, -80, delta)
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		var collider = collision.get_collider()
@@ -37,9 +37,10 @@ func get_nearest_pedestrian_position(fallback: Vector2 = Vector2.ZERO) -> Vector
 	if nearest_pedestrian_position:
 		return nearest_pedestrian_position
 	elif not get_parent().pedestrian_queue.is_empty():
-		var pedestrian = get_parent().pedestrian_queue.pop_front()
+		var pedestrian: Pedestrian = get_parent().pedestrian_queue.pop_front()
 		if pedestrian:
 			nearest_pedestrian_position = Vector2(pedestrian.position)
+			nearest_pedestrian_position.x += pedestrian.velocity.x
 	else:
 		nearest_pedestrian_position = fallback
 	return nearest_pedestrian_position

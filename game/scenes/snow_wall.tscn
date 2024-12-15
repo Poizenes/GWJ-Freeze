@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5amjyp3hjd6"]
+[gd_scene load_steps=9 format=3 uid="uid://c5amjyp3hjd6"]
 
 [ext_resource type="Texture2D" uid="uid://dr7ryquqsuivg" path="res://assets/snowwall/snowwall.png" id="1_d7a81"]
+[ext_resource type="Script" path="res://scripts/snow_wall.gd" id="1_g4oeb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q8dt0"]
 atlas = ExtResource("1_d7a81")
@@ -41,9 +42,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oaxs2"]
 size = Vector2(8, 16)
 
-[node name="SnowWall" type="StaticBody2D"]
-collision_layer = 0
-collision_mask = 0
+[node name="SnowWall" type="StaticBody2D" node_paths=PackedStringArray("sprite", "hitbox")]
+collision_layer = 4
+collision_mask = 16
+script = ExtResource("1_g4oeb")
+sprite = NodePath("AnimatedSprite2D")
+hitbox = NodePath("CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tk6ma")
