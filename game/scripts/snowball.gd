@@ -2,7 +2,8 @@ extends CharacterBody2D
 class_name Snowball
 
 @export var sound : AudioStreamPlayer2D
-@export var GRAVITY = 100
+var GRAVITY = 150
+var HORIZONTAL_SPEED = -20000
 
 @onready var start_position: Vector2
 
@@ -15,9 +16,10 @@ var nearest_pedestrian_position: Vector2 = Vector2.ZERO:
 func _ready() -> void:
 	sound.play()
 	start_position = global_position
-	var angle = 5.75
 	var pedestrian_pos = get_nearest_pedestrian_position(Vector2(160, 120))
 	var range = pedestrian_pos.x - position.x
+	var angle = atan((range * GRAVITY)/(2 * HORIZONTAL_SPEED))
+	print(angle)
 	var initial_velocity = get_initial_velocity(range, angle)
 	velocity.x = initial_velocity * cos(angle)
 	velocity.y = initial_velocity * sin(angle)
