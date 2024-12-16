@@ -19,7 +19,6 @@ func _ready() -> void:
 	var pedestrian_pos = get_nearest_pedestrian_position(Vector2(160, 120))
 	var range = pedestrian_pos.x - position.x
 	var angle = atan((range * GRAVITY)/(2 * HORIZONTAL_SPEED))
-	print(angle)
 	var initial_velocity = get_initial_velocity(range, angle)
 	velocity.x = initial_velocity * cos(angle)
 	velocity.y = initial_velocity * sin(angle)

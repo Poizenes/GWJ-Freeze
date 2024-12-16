@@ -43,3 +43,11 @@ func spawn_pedestrian():
 
 func on_snowball_hit():
 	score += 1
+
+
+func _on_player_enemy_collision() -> void:
+	game_over()
+
+
+func game_over():
+	get_tree().quit()

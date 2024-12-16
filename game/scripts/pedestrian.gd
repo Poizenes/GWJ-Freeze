@@ -21,6 +21,9 @@ func _physics_process(delta: float) -> void:
 				velocity.x = 0
 				sprite.speed_scale = HIT_ANIMATION_SPEED_SCALE
 				collider.health -= DAMAGE
+				get_parent().pedestrian_queue.pop_front()
+		elif collider.is_in_group("player"):
+			collider.emit_signal("enemy_collision")
 	
 	
 func on_snowball_hit() -> void:

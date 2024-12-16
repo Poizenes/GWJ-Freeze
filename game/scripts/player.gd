@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+signal enemy_collision
+
 @export_group("Animation")
 @export var IDLE_ANIMATION_SPEED_SCALE : float =  0.4
 @export var THROW_ANIMATION_SPEED_SCALE : float = 3

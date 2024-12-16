@@ -12,8 +12,9 @@ pedestrian_spawn_timer = NodePath("PedestrianSpawnTimer")
 pedestrian_acceleration = 1.02
 pedestrian_spawn_delay_multiplier = 0.99
 
-[node name="Player" parent="." instance=ExtResource("1_nefw0")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_nefw0")]
 position = Vector2(27, 130)
+collision_layer = 1
 THROW_ANIMATION_SPEED_SCALE = 3.0
 
 [node name="SnowWall" parent="." groups=["wall"] instance=ExtResource("2_84xa1")]
@@ -35,3 +36,5 @@ horizontal_alignment = 1
 
 [node name="Floor" parent="." instance=ExtResource("4_675ag")]
 position = Vector2(0, 156)
+
+[connection signal="enemy_collision" from="Player" to="." method="_on_player_enemy_collision"]

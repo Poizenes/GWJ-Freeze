@@ -107,7 +107,7 @@ animations = [{
 
 [node name="Pedestrian" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "collision_shape", "sound")]
 collision_layer = 4
-collision_mask = 18
+collision_mask = 19
 script = ExtResource("1_i6hf5")
 sprite = NodePath("AnimatedSprite2D")
 collision_shape = NodePath("CollisionShape2D")
