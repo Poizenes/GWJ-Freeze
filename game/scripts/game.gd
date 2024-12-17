@@ -17,14 +17,14 @@ var pedestrian_queue: Array = []
 
 var score : int = 0:
 	set(new_score):
-		score = new_score
+		score = new_score  
 		score_counter.text = str(score)
 
 func _ready() -> void:
 	assert(pedestrian_spawn_timer)
 	assert(score_counter)
-	pedestrian_spawn_timer.connect("timeout", spawn_pedestrian)
-	connect("snowball_hit", on_snowball_hit)
+	pedestrian_spawn_timer.timeout.connect(spawn_pedestrian)
+	snowball_hit.connect(on_snowball_hit)
 	
 	score = 0
 
